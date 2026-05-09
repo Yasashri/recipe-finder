@@ -143,7 +143,7 @@ const RecipeDetails = () => {
           >
             {isFavorite ? "Already in favorites" : "Add to favorites"}
           </button>
-
+{/* 
           <div className={styles.links}>
             {meal.strYoutube && (
               <a href={meal.strYoutube} target='_blank' rel='noreferrer'>
@@ -156,7 +156,7 @@ const RecipeDetails = () => {
                 View source
               </a>
             )}
-          </div>
+          </div> */}
         </div>
       </section>
 
