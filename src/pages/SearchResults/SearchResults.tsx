@@ -33,7 +33,9 @@ const Search=()=> {
 
     getMeals();
   }, [query]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className={styles.page}>
       <section className={styles.searchSection}>

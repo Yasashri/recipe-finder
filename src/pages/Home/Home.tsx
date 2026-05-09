@@ -15,7 +15,8 @@ const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const pageFromUrl = Number(searchParams.get("page") ?? "1");
-  const currentPage = Number.isNaN(pageFromUrl) || pageFromUrl < 1 ? 1 : pageFromUrl;
+  const currentPage =
+    Number.isNaN(pageFromUrl) || pageFromUrl < 1 ? 1 : pageFromUrl;
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -98,7 +99,9 @@ const Home = () => {
       block: "start",
     });
   }
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const visibleCategories = categories;
 
   const startIndex = (currentPage - 1) * RECIPES_PER_PAGE;
@@ -138,7 +141,7 @@ const Home = () => {
         )}
       </section>
 
-      <section className={styles.picksSection} id="recipes">
+      <section className={styles.picksSection} id='recipes'>
         <div className={styles.sectionHeader}>
           <h2>Our picks for you</h2>
 
@@ -166,7 +169,7 @@ const Home = () => {
             {totalPages > 1 && (
               <div className={styles.pagination}>
                 <button
-                  type="button"
+                  type='button'
                   className={styles.paginationButton}
                   disabled={currentPage === 1}
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -184,7 +187,7 @@ const Home = () => {
                 </div>
 
                 <button
-                  type="button"
+                  type='button'
                   className={styles.paginationButton}
                   disabled={currentPage === totalPages}
                   onClick={() => handlePageChange(currentPage + 1)}

@@ -50,26 +50,6 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/all-recipes"
-            className={({ isActive }) =>
-              `${s.link} ${isActive ? s.activeLink : ""}`
-            }
-            onClick={closeMenu}
-          >
-            All recipes
-          </NavLink>
-
-          <NavLink
-            to="/categories"
-            className={({ isActive }) =>
-              `${s.link} ${isActive ? s.activeLink : ""}`
-            }
-            onClick={closeMenu}
-          >
-            Categories
-          </NavLink>
-
-          <NavLink
             to="/favorites"
             className={({ isActive }) =>
               `${s.link} ${isActive ? s.activeLink : ""}`

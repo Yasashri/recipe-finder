@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { getMealById } from "../../api/mealApi";
 import type { Meal } from "../../types/meals";
 import styles from "./RecipeDetails.module.scss";
+import { isMealFavorite, toggleFavoriteMeal } from "../../utils/favorites";
 
 type IngredientItem = {
   ingredient: string;
@@ -38,7 +39,7 @@ function getInstructionSteps(instructions?: string | null): string[] {
 
 const RecipeDetails = () => {
   const { id } = useParams();
-
+  const [isFavorite, setIsFavorite] = useState(false);
   const [meal, setMeal] = useState<Meal | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -59,6 +60,7 @@ const RecipeDetails = () => {
         }
 
         setMeal(result);
+        setIsFavorite(isMealFavorite(result.idMeal));
       } catch {
         setErrorMessage("Something went wrong while loading this recipe.");
       } finally {
@@ -68,6 +70,9 @@ const RecipeDetails = () => {
 
     loadMeal();
   }, [id]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const ingredients = useMemo(() => {
     if (!meal) return [];
@@ -95,7 +100,7 @@ const RecipeDetails = () => {
         <section className={styles.stateBox}>
           <h1>Recipe not found</h1>
           <p>{errorMessage}</p>
-          <Link to='/all-recipes' className={styles.backLink}>
+          <Link to='/' className={styles.backLink}>
             Browse recipes
           </Link>
         </section>
@@ -115,7 +120,7 @@ const RecipeDetails = () => {
         </div>
 
         <div className={styles.heroContent}>
-          <Link to='/all-recipes' className={styles.backLink}>
+          <Link to='/' className={styles.backLink}>
             ← Back to recipes
           </Link>
 
@@ -126,8 +131,17 @@ const RecipeDetails = () => {
             {meal.strArea && <span>{meal.strArea}</span>}
           </div>
 
-          <button type='button' className={styles.favoriteButton}>
-            ♡ Add to favorites
+          <button
+            type='button'
+            className={styles.favoriteButton}
+            onClick={() => {
+              if (!meal) return;
+
+              const newFavoriteState = toggleFavoriteMeal(meal);
+              setIsFavorite(newFavoriteState);
+            }}
+          >
+            {isFavorite ? "Already in favorites" : "Add to favorites"}
           </button>
 
           <div className={styles.links}>

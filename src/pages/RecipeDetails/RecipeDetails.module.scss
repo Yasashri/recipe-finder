@@ -113,6 +113,11 @@
     @include focus-ring;
   }
 }
+.favoriteButtonActive {
+  background-color: #fff0f0;
+  color: #d92d20;
+  border-color: rgba(217, 45, 32, 0.25);
+}
 
 .links {
   display: flex;
