@@ -1,0 +1,65 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
+
+.header {
+  background: $color-bg;
+  border-bottom: 1px solid rgba(234, 217, 189, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.nav {
+  @include container;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.logoIcon {
+  font-size: 26px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-text;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    height: 64px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .links {
+    gap: 16px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+}

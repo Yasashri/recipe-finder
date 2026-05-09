@@ -1,0 +1,24 @@
+@mixin container {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+@mixin section-spacing {
+  padding-block: 64px;
+
+  @media (max-width: 768px) {
+    padding-block: 40px;
+  }
+}
+
+@mixin card {
+  background: #ffffff;
+  border: 1px solid #ead9bd;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(89, 50, 20, 0.08);
+}
+
+@mixin focus-ring {
+  outline: 3px solid rgba(211, 84, 0, 0.25);
+  outline-offset: 2px;
+}
