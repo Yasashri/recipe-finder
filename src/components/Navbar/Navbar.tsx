@@ -1,21 +1,26 @@
 import { NavLink, Link } from "react-router-dom";
-import styles from "./Navbar.module.scss";
+import s from "./Navbar.module.scss";
 
 const Navbar = () => {
   return (
-    <header className={styles.header}>
-      <nav className={styles.nav}>
-        <Link to='/' className={styles.logo}>
-          <span className={styles.logoIcon}>🍲</span>
-          <span>RecipeFinder</span>
+    <header className={s.header}>
+      <nav className={s.nav}>
+        <Link to='/' className={s.logo}>
+          <img src='logo.png' alt='logo' />
         </Link>
 
-        <div className={styles.links}>
-          <NavLink to='/' className={styles.link}>
+        <div className={s.links}>
+          <NavLink to='/' className={s.link}>
             Home
           </NavLink>
-          <NavLink to='/favorites' className={styles.link}>
+          <NavLink to='/' className={s.link}>
+            Search
+          </NavLink>
+          <NavLink to='/favorites' className={s.link}>
             Favorites
+          </NavLink>
+          <NavLink to='/' className={s.link}>
+            About
           </NavLink>
         </div>
       </nav>

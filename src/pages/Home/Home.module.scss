@@ -1,0 +1,192 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
+
+.hero {
+  @include container;
+  min-height: 424px;
+  margin-top: 0;
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  .heroContent {
+    max-width: 560px;
+
+    h1 {
+      max-width: 500px;
+      margin: 0 0 8px;
+      color: #000000;
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      max-width: 430px;
+      margin: 0 0 48px;
+      color: #665f58;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+  }
+}
+
+.categoriesSection {
+  @include container;
+  padding-top: 30px;
+  h2 {
+    margin: 0 0 22px;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .categoryGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 19px;
+  }
+}
+
+.picksSection {
+  @include container;
+  padding-top: 62px;
+
+  h2 {
+    margin: 0 0 22px;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .recipeGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 34px;
+  }
+  .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.paginationButton,
+.pageNumber {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid #e8d8bd;
+  border-radius: 999px;
+  background-color: #fffaf0;
+  color: #3b2a1a;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.paginationButton:hover:not(:disabled),
+.pageNumber:hover {
+  background-color: #f5e6c8;
+}
+
+.paginationButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.activePage {
+  background-color: #8b4513;
+  border-color: #8b4513;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    margin-top: 32px;
+    gap: 6px;
+  }
+
+  .paginationButton,
+  .pageNumber {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+}
+}
+
+@media (max-width: 1024px) {
+  .categoryGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .recipeGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    width: 100%;
+    min-height: 520px;
+    padding: 32px 16px;
+    align-items: flex-start;
+    background-position: center bottom;
+  }
+
+  .heroContent {
+    max-width: 100%;
+
+    h1 {
+      max-width: 360px;
+      font-size: 36px;
+    }
+
+    p {
+      max-width: 330px;
+      margin-bottom: 28px;
+      font-size: 17px;
+    }
+  }
+
+  .categoriesSection {
+    padding-top: 38px;
+  }
+
+  .categoryGrid {
+    display: flex;
+    overflow-x: auto;
+    gap: 14px;
+    padding: 4px 2px 14px;
+    scroll-snap-type: x mandatory;
+
+    > * {
+      flex: 0 0 150px;
+      scroll-snap-align: start;
+    }
+  }
+
+  .picksSection {
+    padding-top: 44px;
+  }
+}
+
+@media (max-width: 600px) {
+  .recipeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .categoriesSection h2,
+  .picksSection h2 {
+    font-size: 26px;
+  }
+}
