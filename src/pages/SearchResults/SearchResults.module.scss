@@ -1,0 +1,146 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
+
+.page {
+  min-height: calc(100vh - 260px);
+  background-color: $color-bg;
+}
+
+.searchSection {
+  @include container;
+
+  padding-block: 56px 48px;
+}
+
+.title {
+  margin: 0 0 40px;
+  font-size: clamp(2rem, 4vw, 2.625rem);
+  line-height: 1.15;
+  font-weight: 800;
+  color: $color-text;
+}
+
+.searchContent {
+  width: 100%;
+  max-width: 530px;
+  margin-inline: auto;
+}
+
+.resultBanner {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px 18px;
+  border-radius: $radius-sm;
+  background-color: #ffc76d;
+  color: $color-text;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 700;
+  text-align: center;
+
+  span {
+    color: $color-primary;
+  }
+}
+
+.freshSearchPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultsSection {
+  @include container;
+
+  padding-bottom: 80px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.message {
+  max-width: 560px;
+  margin: 32px auto 0;
+  color: $color-muted;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  text-align: center;
+}
+
+.emptyState {
+  @include card;
+
+  max-width: 560px;
+  margin: 32px auto 0;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.emptyTitle {
+  margin: 0 0 8px;
+  color: $color-text;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.emptyText {
+  margin: 0;
+  color: $color-muted;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchSection {
+    padding-block: 40px 36px;
+  }
+
+  .title {
+    margin-bottom: 28px;
+  }
+
+  .resultBanner {
+    padding: 13px 16px;
+    font-size: 1.125rem;
+  }
+
+  .resultsSection {
+    padding-bottom: 56px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .searchSection {
+    padding-block: 32px 32px;
+  }
+
+  .title {
+    margin-bottom: 0;
+    font-size: 2rem;
+  }
+
+  .resultBanner {
+    margin-top: 12px;
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

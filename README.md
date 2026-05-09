@@ -1,75 +1,138 @@
-# React + TypeScript + Vite
+---- RecipeFinder -----
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RecipeFinder is a simple, responsive web application built with React using TheMealDB free API.
 
-Currently, two official plugins are available:
+Live URL: `https://recipes.yasashrimedagedara.com`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Project overview
 
-## React Compiler
+The main goal is to provide a clean, simple and user friendly way to discover recipes quickly.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Design focus:
 
-Note: This will impact Vite dev & build performances.
+- Simple navigation
+- Clear recipe presentation
+- Mobile-friendly browsing
+- Easy recipe search
+- Quick access to favorite recipes
+- Warm and food-friendly visual styling
 
-## Expanding the ESLint configuration
+Why this design:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Visual style
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The UI uses a warm cream background with green and orange accents to create a friendly, natural, and food-related feeling.
+The cream background makes the interface feel softer than plain white, while the green primary color gives a fresh and healthy impression. 
+Orange is used as an accent color because it works well for food-related calls to action and adds warmth to the design.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Layout
+
+The layout uses a maximum container width of `1200px` to keep the content readable on large screens. 
+On mobile screens, the content uses good side spacing so that the design does not feel crowded.
+
+Reusable SCSS mixins used for:
+
+- Consistent container width
+- Section spacing
+- Card styling
+- Focus states
+
+Design consistent across the application.
+
+3. User Experience Choices
+
+Search-first experience
+Category browsing
+Recipe cards
+Favorites feature
+Responsive design
+Micro interactions
+
+Features: 
+
+- Home page with hero section
+- Recipe search functionality
+- Search results page
+- Category wise browsing
+- Recipe cards
+- Recipe details page
+- Favorites page
+- Add/remove favorite recipes
+- Favorites stored in local storage
+- Pagination for recipe listings
+- Responsive layout for desktop and mobile
+- Reusable UI components
+- Modular SCSS styling
+
+
+Setup and Installation:
+
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repository-url>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Navigate to the Project Folder
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd recipe-finder
 ```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Run the Development Server
+
+```bash
+npm run dev
+```
+
+### 5. Open the Project in the Browser
+
+After running the development server, Vite will provide a local URL similar to:
+
+```bash
+http://localhost:5173
+```
+
+Open this URL in your browser.
+
+---
+
+## Available Scripts
+
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+Future Improvements:
+
+- Add advanced filters such as category, country, or ingredient
+- Add loading skeletons for a smoother user experience
+- Add user accounts for cloud-saved favorites
+- Add recipe sharing functionality
+- Improve accessibility with more ARIA labels and keyboard testing
+- Improve visals and spacing further
+
+Author:
+Developed by Yasashri Medagedara.
