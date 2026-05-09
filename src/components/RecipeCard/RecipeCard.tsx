@@ -14,7 +14,7 @@ export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
   const navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(() =>
-    isMealFavorite(meal.idMeal)
+    isMealFavorite(meal.idMeal),
   );
 
   const goToRecipeDetails = () => {
@@ -34,7 +34,7 @@ export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
     <article
       className={styles.card}
       onClick={goToRecipeDetails}
-      role="button"
+      role='button'
       tabIndex={0}
       onKeyDown={(event) => {
         if (event.key === "Enter") {
@@ -50,7 +50,7 @@ export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
         />
 
         <button
-          type="button"
+          type='button'
           className={`${styles.favoriteButton} ${
             isFavorite ? styles.favoriteButtonActive : ""
           }`}
@@ -61,7 +61,11 @@ export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
           }
           onClick={handleFavoriteClick}
         >
-          {isFavorite ? "♥" : "♡"}
+          {isFavorite ? (
+            <i className='fa-solid fa-heart' aria-hidden='true'></i>
+          ) : (
+            <i className='fa-regular fa-heart' aria-hidden='true'></i>
+          )}
         </button>
       </div>
 
@@ -69,12 +73,18 @@ export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
         <h3>{meal.strMeal}</h3>
 
         <div className={styles.meta}>
-          <span>🌎 {meal.strArea ?? "Unknown"}</span>
-          <span>▣ {meal.strCategory ?? "Recipe"}</span>
+          <span>
+            <i className='fa-solid fa-earth-americas' aria-hidden='true'></i>
+            {meal.strArea ?? "Unknown"}
+          </span>
+          <span>
+            <i className='fa-solid fa-book' aria-hidden='true'></i>{" "}
+            {meal.strCategory ?? "Recipe"}
+          </span>
         </div>
 
         <button
-          type="button"
+          type='button'
           className={styles.viewButton}
           onClick={(event) => {
             event.stopPropagation();

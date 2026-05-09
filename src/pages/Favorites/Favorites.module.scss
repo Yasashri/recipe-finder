@@ -37,7 +37,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background-color: $color-surface;
+  background-color: $color-bg-secondary;
   color: $color-text;
   font-size: 88px;
   line-height: 1;
@@ -71,7 +71,7 @@
   justify-content: center;
   border-radius: $radius-sm;
   background-color: $color-primary;
-  color: $color-surface;
+  color: $color-bg-secondary;
   font-size: 1.25rem;
   font-weight: 700;
   text-decoration: none;

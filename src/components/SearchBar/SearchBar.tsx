@@ -28,14 +28,14 @@ export function SearchBar({ defaultValue = '' }: SearchBarProps) {
     >
       <div className={styles.inputWrap}>
         <span className={styles.icon} aria-hidden="true">
-          ⌕
+           <i className='fa-solid fa-magnifying-glass' aria-hidden='true'></i>
         </span>
 
         <input
           value={query}
           required
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search for a meal, category ingredients..."
+          placeholder="Search recipe or ingredients..."
           aria-label="Search recipes"
         />
       </div>

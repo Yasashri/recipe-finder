@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: $color-surface;
+  background: $color-bg-secondary;
   border: 1px solid rgba(234, 217, 189, 0.7);
   border-radius: $radius-sm;
   box-shadow: $nav-shadow;
@@ -183,7 +183,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 4px;
-    background-color: $color-surface;
+    background-color: $color-bg-secondary;
     border: 1px solid #ead9bd;
     border-radius: $radius-md;
     box-shadow: 0 18px 40px rgba(31, 26, 20, 0.14);

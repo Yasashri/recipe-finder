@@ -20,7 +20,7 @@
   overflow: hidden;
   border-radius: $radius-md;
   box-shadow: 0 14px 34px rgba(89, 50, 20, 0.12);
-  background-color: $color-surface;
+  background-color: $color-bg-secondary;
 }
 
 .image {
@@ -91,7 +91,7 @@
   border: none;
   border-radius: $radius-sm;
   background-color: $color-primary;
-  color: $color-surface;
+  color: $color-bg-secondary;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 700;
@@ -113,11 +113,7 @@
     @include focus-ring;
   }
 }
-.favoriteButtonActive {
-  background-color: #fff0f0;
-  color: #d92d20;
-  border-color: rgba(217, 45, 32, 0.25);
-}
+
 
 .links {
   display: flex;
@@ -221,7 +217,7 @@
   margin-top: 2px;
   border-radius: 50%;
   background-color: $color-primary;
-  color: $color-surface;
+  color: $color-bg-secondary;
   font-size: 0.78rem;
   font-weight: 800;
 }
@@ -261,7 +257,7 @@
 .primaryAction {
   border: 1px solid $color-primary;
   background-color: $color-primary;
-  color: $color-surface;
+  color: $color-bg-secondary;
 
   &:hover {
     background-color: $color-primary-dark;
