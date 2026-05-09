@@ -6,7 +6,7 @@ import { searchMealsByName } from "../../api/mealApi";
 import type { Meal } from "../../types/meals";
 import styles from "./SearchResults.module.scss";
 
-const Search=()=> {
+const Search = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
 
@@ -40,7 +40,9 @@ const Search=()=> {
     <main className={styles.page}>
       <section className={styles.searchSection}>
         <h1 className={styles.title}>Search recipes</h1>
-          <p className="styles.subTitle">Find quick, simple recipes for every craving.</p>
+        <p className='styles.subTitle'>
+          Find quick, simple recipes for every craving.
+        </p>
         <SearchBar defaultValue={query} />
 
         {query && (
@@ -49,7 +51,11 @@ const Search=()=> {
           </div>
         )}
       </section>
-
+      {query === "" && (
+        <div className={styles.freshSearchPage}>
+          <p>Your search will appear here.</p>
+        </div>
+      )}
       <section className={styles.resultsSection}>
         {isLoading && <p className={styles.message}>Loading recipes...</p>}
 
@@ -71,6 +77,6 @@ const Search=()=> {
       </section>
     </main>
   );
-}
+};
 
-export default Search
+export default Search;

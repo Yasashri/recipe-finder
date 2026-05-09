@@ -46,13 +46,13 @@ const RecipeDetails = () => {
 
   useEffect(() => {
     if (!id) return;
-
+    const mealId = id;
     async function loadMeal() {
       try {
         setIsLoading(true);
         setErrorMessage("");
 
-        const result = await getMealById(id);
+        const result = await getMealById(mealId);
 
         if (!result) {
           setErrorMessage("Recipe not found.");

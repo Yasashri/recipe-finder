@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .page {
   min-height: calc(100vh - 260px);
@@ -41,6 +41,12 @@
   span {
     color: $color-primary;
   }
+}
+
+.freshSearchPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .resultsSection {

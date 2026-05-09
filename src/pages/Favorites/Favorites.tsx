@@ -31,7 +31,7 @@ const Favorites = () => {
 
           <p>Save meals you like to see them here.</p>
 
-          <Link to="/all-recipes" className={styles.browseButton}>
+          <Link to="/" className={styles.browseButton}>
             Browse recipes
           </Link>
         </section>
