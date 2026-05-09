@@ -174,19 +174,6 @@
   line-height: 1.35;
 }
 
-.checkIcon {
-  flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  display: inline-grid;
-  place-items: center;
-  border: 1.5px solid $color-primary;
-  border-radius: 50%;
-  color: $color-primary;
-  font-size: 0.7rem;
-  font-weight: 800;
-}
-
 .instructions {
   display: grid;
   gap: 18px;

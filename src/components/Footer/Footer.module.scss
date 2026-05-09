@@ -112,13 +112,15 @@
 
     .inner {
       grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
+      justify-items: stretch;
+      text-align: left;
       gap: 32px;
     }
 
     .brand {
+      justify-self: center;
       max-width: 320px;
+      text-align: center;
 
       .logoLink {
         justify-content: center;
@@ -132,16 +134,18 @@
       .description {
         max-width: 300px;
         font-size: 16px;
+        text-align: center;
       }
     }
 
     .footerGroup {
       width: 100%;
-      max-width: 320px;
+      max-width: none;
 
       .title {
         margin-bottom: 14px;
         font-size: 16px;
+        text-align: left;
       }
 
       a {
@@ -150,28 +154,56 @@
     }
 
     .linkGrid {
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 24px;
+      grid-template-columns: 1fr;
       row-gap: 12px;
 
       a {
-        justify-self: center;
+        justify-self: start;
       }
     }
 
     .socialGrid {
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 24px;
+      grid-template-columns: 1fr;
       row-gap: 14px;
 
       a {
-        justify-self: center;
+        justify-self: start;
       }
     }
 
     .copy {
       margin-top: 36px;
       font-size: 13px;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding-block: 32px 20px;
+
+    .inner {
+      gap: 30px;
+    }
+
+    .brand {
+      .logo {
+        width: 180px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+    }
+
+    .footerGroup {
+      max-width: none;
+    }
+
+    .copy {
+      width: min(100% - 32px, $container-width);
+      margin-top: 32px;
     }
   }
 }

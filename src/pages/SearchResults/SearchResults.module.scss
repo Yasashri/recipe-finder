@@ -9,7 +9,7 @@
 .searchSection {
   @include container;
 
-  padding-block: 64px 48px;
+  padding-block: 56px 48px;
 }
 
 .title {
@@ -125,7 +125,7 @@
   }
 
   .title {
-    margin-bottom: 24px;
+    margin-bottom: 0;
     font-size: 2rem;
   }
 

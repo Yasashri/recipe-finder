@@ -169,7 +169,7 @@ const RecipeDetails = () => {
               key={`${item.measure}-${item.ingredient}`}
               className={styles.ingredient}
             >
-              <span className={styles.checkIcon}>✓</span>
+              <span className={styles.checkIcon}><i className="fa-solid fa-circle-check"></i></span>
               <span>
                 {item.measure} {item.ingredient}
               </span>

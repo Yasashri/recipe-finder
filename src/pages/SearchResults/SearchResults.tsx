@@ -40,7 +40,7 @@ const Search=()=> {
     <main className={styles.page}>
       <section className={styles.searchSection}>
         <h1 className={styles.title}>Search recipes</h1>
-
+          <p className="styles.subTitle">Find quick, simple recipes for every craving.</p>
         <SearchBar defaultValue={query} />
 
         {query && (

@@ -143,9 +143,7 @@ const Home = () => {
 
       <section className={styles.picksSection} id='recipes'>
         <div className={styles.sectionHeader}>
-          <h2>Our picks for you</h2>
-
-          <p>{selectedCategory} recipes</p>
+          <h2>{selectedCategory} recipes</h2>
         </div>
 
         {error && <p className={styles.errorMessage}>{error}</p>}

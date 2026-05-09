@@ -8,6 +8,10 @@ const Navbar = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+   const handleAboutClick = () => {
+    alert("Used TheMealDB API to fetch recipe data for Recipe Finder.");
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={s.header}>
@@ -60,11 +64,9 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              `${s.link} ${isActive ? s.activeLink : ""}`
-            }
-            onClick={closeMenu}
+            to="#"
+            className={s.link}
+            onClick={handleAboutClick}
           >
             About
           </NavLink>
