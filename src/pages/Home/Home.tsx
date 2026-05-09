@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { RecipeCard } from "../../components/RecipeCard/RecipeCard";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
@@ -11,10 +12,14 @@ import { getCategories, getMealsByCategory } from "../../api/mealApi";
 const RECIPES_PER_PAGE = 12;
 
 const Home = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const pageFromUrl = Number(searchParams.get("page") ?? "1");
+  const currentPage = Number.isNaN(pageFromUrl) || pageFromUrl < 1 ? 1 : pageFromUrl;
+
   const [categories, setCategories] = useState<Category[]>([]);
   const [meals, setMeals] = useState<Meal[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("Chicken");
-  const [currentPage, setCurrentPage] = useState(1);
 
   const [isLoadingCategories, setIsLoadingCategories] = useState(true);
   const [isLoadingMeals, setIsLoadingMeals] = useState(true);
@@ -48,7 +53,6 @@ const Home = () => {
         const mealData = await getMealsByCategory(selectedCategory);
 
         setMeals(mealData);
-        setCurrentPage(1);
       } catch (error) {
         console.error(error);
         setError("Failed to load recipes.");
@@ -60,29 +64,42 @@ const Home = () => {
     loadMeals();
   }, [selectedCategory]);
 
+  const totalPages = Math.ceil(meals.length / RECIPES_PER_PAGE);
+
+  useEffect(() => {
+    if (totalPages > 0 && currentPage > totalPages) {
+      setSearchParams({ page: String(totalPages) }, { replace: true });
+    }
+  }, [currentPage, totalPages, setSearchParams]);
+
   function handleCategoryClick(categoryName: string) {
     setSelectedCategory(categoryName);
+    setSearchParams({ page: "1" });
 
     setTimeout(() => {
       const moveToRecipe = document.getElementById("recipes");
 
       moveToRecipe?.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "start",
       });
     }, 100);
   }
 
   function handlePageChange(page: number) {
-    setCurrentPage(page);
+    if (page < 1 || page > totalPages) return;
+
+    setSearchParams({ page: String(page) });
 
     const picksSection = document.getElementById("recipes");
-    picksSection?.scrollIntoView({ behavior: "smooth" });
+
+    picksSection?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }
 
   const visibleCategories = categories;
-
-  const totalPages = Math.ceil(meals.length / RECIPES_PER_PAGE);
 
   const startIndex = (currentPage - 1) * RECIPES_PER_PAGE;
   const paginatedMeals = meals.slice(startIndex, startIndex + RECIPES_PER_PAGE);
@@ -121,7 +138,7 @@ const Home = () => {
         )}
       </section>
 
-      <section className={styles.picksSection} id='recipes'>
+      <section className={styles.picksSection} id="recipes">
         <div className={styles.sectionHeader}>
           <h2>Our picks for you</h2>
 
@@ -149,7 +166,7 @@ const Home = () => {
             {totalPages > 1 && (
               <div className={styles.pagination}>
                 <button
-                  type='button'
+                  type="button"
                   className={styles.paginationButton}
                   disabled={currentPage === 1}
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -157,27 +174,17 @@ const Home = () => {
                   Previous
                 </button>
 
-                {Array.from({ length: totalPages }, (_, index) => {
-                  const page = index + 1;
-
-                  return (
-                    <button
-                      key={page}
-                      type='button'
-                      className={`${styles.pageNumber} ${
-                        currentPage === page ? styles.activePage : ""
-                      }`}
-                      onClick={() => handlePageChange(page)}
-                      aria-label={`Go to page ${page}`}
-                      aria-current={currentPage === page ? "page" : undefined}
-                    >
-                      {page}
-                    </button>
-                  );
-                })}
+                <div
+                  className={styles.pageInfo}
+                  aria-label={`Page ${currentPage} of ${totalPages}`}
+                >
+                  <span>{currentPage}</span>
+                  <span className={styles.pageDivider}>/</span>
+                  <span>{totalPages}</span>
+                </div>
 
                 <button
-                  type='button'
+                  type="button"
                   className={styles.paginationButton}
                   disabled={currentPage === totalPages}
                   onClick={() => handlePageChange(currentPage + 1)}
