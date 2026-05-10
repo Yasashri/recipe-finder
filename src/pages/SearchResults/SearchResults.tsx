@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
-import { RecipeCard } from "../../components/RecipeCard/RecipeCard";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { searchMealsByName } from "../../api/mealApi";
 import type { Meal } from "../../types/meals";
 import styles from "./SearchResults.module.scss";

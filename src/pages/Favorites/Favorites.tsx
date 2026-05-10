@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RecipeCard } from "../../components/RecipeCard/RecipeCard";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import type { Meal } from "../../types/meals";
 import { getFavoriteMeals } from "../../utils/favorites";
 import styles from "./Favorites.module.scss";
 
 const Favorites = () => {
- const [favorites, setFavorites] = useState<Meal[]>(() => getFavoriteMeals());
-
+  const [favorites, setFavorites] = useState<Meal[]>(() => getFavoriteMeals());
 
   function handleFavoriteChange() {
     setFavorites(getFavoriteMeals());
@@ -23,7 +22,7 @@ const Favorites = () => {
 
       {favorites.length === 0 ? (
         <section className={styles.emptyState}>
-          <div className={styles.iconCircle} aria-hidden="true">
+          <div className={styles.iconCircle} aria-hidden='true'>
             ♡
           </div>
 
@@ -31,7 +30,7 @@ const Favorites = () => {
 
           <p>Save meals you like to see them here.</p>
 
-          <Link to="/" className={styles.browseButton}>
+          <Link to='/' className={styles.browseButton}>
             Browse recipes
           </Link>
         </section>
