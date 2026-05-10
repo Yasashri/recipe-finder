@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
-import { RecipeCard } from "../../components/RecipeCard/RecipeCard";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import type { Category, Meal } from "../../types/meals";
 import heroImage from "../../assets/images/hero-pasta.png";

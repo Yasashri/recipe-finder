@@ -4,6 +4,7 @@ import { getMealById } from "../../api/mealApi";
 import type { Meal } from "../../types/meals";
 import styles from "./RecipeDetails.module.scss";
 import { isMealFavorite, toggleFavoriteMeal } from "../../utils/favorites";
+import { toast } from "react-toastify";
 
 type IngredientItem = {
   ingredient: string;
@@ -139,11 +140,16 @@ const RecipeDetails = () => {
 
               const newFavoriteState = toggleFavoriteMeal(meal);
               setIsFavorite(newFavoriteState);
+              if (newFavoriteState) {
+                toast.success("Added to favorites");
+              } else {
+                toast.info("Removed from favorites");
+              }
             }}
           >
             {isFavorite ? "Already in favorites" : "Add to favorites"}
           </button>
-{/* 
+          {/* 
           <div className={styles.links}>
             {meal.strYoutube && (
               <a href={meal.strYoutube} target='_blank' rel='noreferrer'>
@@ -169,7 +175,9 @@ const RecipeDetails = () => {
               key={`${item.measure}-${item.ingredient}`}
               className={styles.ingredient}
             >
-              <span className={styles.checkIcon}><i className="fa-solid fa-circle-check"></i></span>
+              <span className={styles.checkIcon}>
+                <i className='fa-solid fa-circle-check'></i>
+              </span>
               <span>
                 {item.measure} {item.ingredient}
               </span>

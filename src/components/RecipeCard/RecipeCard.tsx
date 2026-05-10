@@ -4,43 +4,42 @@ import type { MouseEvent } from "react";
 import type { Meal } from "../../types/meals";
 import { isMealFavorite, toggleFavoriteMeal } from "../../utils/favorites";
 import styles from "./RecipeCard.module.scss";
+import { toast } from "react-toastify";
 
 type RecipeCardProps = {
   meal: Meal;
   onFavoriteChange?: () => void;
 };
 
-export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
+const RecipeCard = ({ meal, onFavoriteChange }: RecipeCardProps) => {
   const navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(() =>
     isMealFavorite(meal.idMeal),
   );
 
-  const goToRecipeDetails = () => {
+  function goToRecipeDetails() {
     navigate(`/recipe/${meal.idMeal}`);
-  };
+  }
 
-  const handleFavoriteClick = (event: MouseEvent<HTMLButtonElement>) => {
+  function handleFavoriteClick(event: MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
 
     const newFavoriteState = toggleFavoriteMeal(meal);
 
     setIsFavorite(newFavoriteState);
     onFavoriteChange?.();
-  };
+
+    if (newFavoriteState) {
+    toast.success("Added to favorites");
+  } else {
+    toast.info("Removed from favorites");
+  }
+  }
 
   return (
     <article
       className={styles.card}
-      onClick={goToRecipeDetails}
-      role='button'
-      tabIndex={0}
-      onKeyDown={(event) => {
-        if (event.key === "Enter") {
-          goToRecipeDetails();
-        }
-      }}
     >
       <div className={styles.imageWrap}>
         <img
@@ -78,7 +77,7 @@ export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
             {meal.strArea ?? "Unknown"}
           </span>
           <span>
-            <i className='fa-solid fa-book' aria-hidden='true'></i>{" "}
+            <i className='fa-solid fa-book' aria-hidden='true'></i>
             {meal.strCategory ?? "Recipe"}
           </span>
         </div>
@@ -96,4 +95,6 @@ export function RecipeCard({ meal, onFavoriteChange }: RecipeCardProps) {
       </div>
     </article>
   );
-}
+};
+
+export default RecipeCard;
